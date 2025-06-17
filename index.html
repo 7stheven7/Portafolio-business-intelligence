@@ -3,47 +3,54 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portafolio Business Intelligence Mejorado</title>
+  <title>Portafolio Business Intelligence Premium</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
+    /* Base styles and fonts */
     body {
       font-family: 'Inter', sans-serif;
       overflow-x: hidden; /* Prevent horizontal scroll from animations */
+      background-color: #0F172A; /* Deeper background for the body */
     }
+
+    /* Custom Scrollbar for a sleeker look */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #1A202C;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #667EEA, #7F9CF5); /* Gradient scrollbar thumb */
+      border-radius: 5px;
+      transition: background 0.3s ease;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(180deg, #7F9CF5, #667EEA);
+    }
+
+    /* Gradient Backgrounds */
     .gradient-bg {
       /* Deeper, more refined gradient for main backgrounds */
       background: linear-gradient(135deg, #1A202C 0%, #171923 100%);
     }
     .text-gradient {
-      background: linear-gradient(90deg, #667EEA, #7F9CF5); /* A bit softer blue gradient */
+      background: linear-gradient(90deg, #667EEA, #7F9CF5); /* A bit softer blue gradient for text */
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      color: transparent;
+      color: transparent; /* Fallback for browsers not supporting text gradient */
     }
-    .project-card {
-      transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
-      border-radius: 0.75rem; /* Consistent rounded corners */
-      border: 1px solid rgba(100, 116, 139, 0.3); /* Subtle light border */
-    }
-    .project-card:hover {
-      transform: translateY(-8px); /* More pronounced lift */
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6), 0 10px 20px -5px rgba(0, 0, 0, 0.4); /* Deeper shadow */
-      border-color: #6366f1; /* Highlight border on hover */
-    }
-    .skill-badge {
-      background: linear-gradient(45deg, #4299E1, #667EEA); /* Slightly brighter gradient */
-      border-radius: 9999px; /* Fully rounded pills */
-      padding: 0.6rem 1.25rem; /* Adjusted padding */
-      font-weight: 500; /* Medium font weight */
-      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    }
+
+    /* Navbar Link Styling */
     .nav-link {
       position: relative;
       padding-bottom: 0.6rem; /* Slightly more space for the underline */
       font-weight: 500;
+      color: #E2E8F0; /* Light gray text for links */
+      transition: color 0.3s ease;
     }
     .nav-link::after {
       content: '';
@@ -52,16 +59,78 @@
       height: 3px; /* Thicker underline */
       bottom: 0;
       left: 0;
-      background: linear-gradient(90deg, #667EEA, #7F9CF5); /* Brighter underline */
+      background: linear-gradient(90deg, #667EEA, #7F9CF5); /* Brighter underline gradient */
       transition: width 0.3s ease;
     }
     .nav-link:hover::after {
       width: 100%;
     }
+    .nav-link:hover {
+        color: #7F9CF5; /* Highlight color on hover */
+    }
+
+    /* Primary Buttons */
+    .btn-primary {
+      background: linear-gradient(45deg, #667EEA, #7F9CF5); /* Refined blue-purple gradient */
+      transition: all 0.3s ease, transform 0.2s ease; /* Add transform for bounce */
+      border-radius: 9999px; /* Fully rounded */
+      padding: 0.85rem 2.2rem; /* Slightly larger padding */
+      font-weight: 600; /* Semi-bold */
+      letter-spacing: 0.025em; /* Slight letter spacing */
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4); /* More vibrant shadow */
+      color: white; /* Ensure text is white */
+      text-decoration: none; /* Remove underline for links */
+      display: inline-flex; /* For icon alignment */
+      align-items: center; /* For icon alignment */
+      justify-content: center; /* For icon alignment */
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px) scale(1.02); /* Lift and slight scale */
+      box-shadow: 0 15px 25px rgba(102, 126, 234, 0.6);
+      filter: brightness(1.1); /* Subtle glow on hover */
+    }
+
+    /* Secondary Buttons (e.g., "Contactar" in Hero) */
+    .btn-secondary {
+      background: transparent;
+      border: 2px solid rgba(255, 255, 255, 0.6);
+      color: white;
+      transition: all 0.3s ease;
+      border-radius: 9999px;
+      padding: 0.85rem 2.2rem;
+      font-weight: 600;
+      letter-spacing: 0.025em;
+      text-decoration: none; /* Remove underline for links */
+      display: inline-flex; /* For icon alignment */
+      align-items: center; /* For icon alignment */
+      justify-content: center; /* For icon alignment */
+    }
+    .btn-secondary:hover {
+      border-color: #667EEA; /* Accent color border on hover */
+      background-color: rgba(102, 126, 234, 0.1); /* Subtle background fill */
+      color: #7F9CF5; /* Text color change */
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Project Cards */
+    .project-card {
+      background: #1A202C; /* Dark background for cards */
+      transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+      border-radius: 0.75rem; /* Consistent rounded corners */
+      border: 1px solid rgba(100, 116, 139, 0.3); /* Subtle light border */
+      overflow: hidden; /* Ensure rounded corners clip content */
+    }
+    .project-card:hover {
+      transform: translateY(-8px); /* More pronounced lift */
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6), 0 10px 20px -5px rgba(0, 0, 0, 0.4); /* Deeper shadow */
+      border-color: #6366f1; /* Highlight border on hover */
+    }
     .project-image-container {
       position: relative;
       overflow: hidden;
-      border-radius: 0.75rem 0.75rem 0 0;
+      height: 200px; /* Fixed height for image container */
+      border-radius: 0.75rem 0.75rem 0 0; /* Only top corners rounded */
     }
     .project-image {
       width: 100%;
@@ -70,7 +139,7 @@
       transition: transform 0.5s ease-in-out; /* Smooth zoom on hover */
     }
     .project-card:hover .project-image {
-      transform: scale(1.05);
+      transform: scale(1.08); /* Stronger zoom effect */
     }
     .project-overlay {
       position: absolute;
@@ -92,50 +161,64 @@
     .project-card:hover .project-overlay {
       opacity: 1;
     }
-    .btn-primary {
-      background: linear-gradient(45deg, #667EEA, #7F9CF5); /* Refined blue-purple gradient */
-      transition: all 0.3s ease, transform 0.2s ease; /* Add transform for bounce */
-      border-radius: 9999px;
-      padding: 0.85rem 2.2rem; /* Slightly larger padding */
-      font-weight: 600; /* Semi-bold */
-      letter-spacing: 0.025em; /* Slight letter spacing */
-      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4); /* More vibrant shadow */
+
+    /* Skill Badges */
+    .skill-badge {
+      background: linear-gradient(45deg, #4299E1, #667EEA); /* Slightly brighter gradient */
+      border-radius: 9999px; /* Fully rounded pills */
+      padding: 0.6rem 1.25rem; /* Adjusted padding */
+      font-weight: 500; /* Medium font weight */
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3); /* More prominent shadow */
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-    .btn-primary:hover {
-      transform: translateY(-3px) scale(1.02); /* Lift and slight scale */
-      box-shadow: 0 15px 25px rgba(102, 126, 234, 0.6);
-    }
-    .btn-secondary { /* For "Contactar" in Hero */
-      background: transparent;
-      border: 2px solid rgba(255, 255, 255, 0.6);
-      color: white;
-      transition: all 0.3s ease;
-      border-radius: 9999px;
-      padding: 0.85rem 2.2rem;
-      font-weight: 600;
-      letter-spacing: 0.025em;
-    }
-    .btn-secondary:hover {
-      border-color: #667EEA;
-      background-color: rgba(102, 126, 234, 0.1);
-      color: #7F9CF5;
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+    .skill-badge:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
     }
 
+    /* Stat Cards */
     .stat-card {
       background: linear-gradient(135deg, #2D3748 0%, #1A202C 100%); /* Darker, richer background */
       border-bottom: 4px solid #667EEA; /* Thicker, vibrant border */
       border-radius: 0.75rem;
       padding: 1.8rem 1.2rem; /* Adjusted padding */
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* Consistent shadow */
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, background 0.3s ease;
     }
     .stat-card:hover {
       transform: translateY(-5px); /* Subtle lift on hover */
+      background: linear-gradient(135deg, #3A455C 0%, #2D3748 100%); /* Slight background shift on hover */
+    }
+    .stat-card .text-5xl {
+      font-weight: 900; /* Extra bold for numbers */
+      text-shadow: 0 2px 5px rgba(102, 126, 234, 0.3); /* Text shadow for numbers */
     }
 
-    /* Animation keyframes */
+    /* Filter Buttons */
+    .filter-btn {
+      background: #2D3748; /* Default background for inactive buttons */
+      color: #A0AEC0; /* Lighter gray text for inactive buttons */
+      transition: all 0.3s ease;
+      border-radius: 9999px;
+      padding: 0.6rem 1.5rem;
+      font-weight: 500;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    .filter-btn:not(.active):hover {
+      background: #4A5568; /* Darker gray on hover for inactive */
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    }
+    .filter-btn.active {
+      background: linear-gradient(45deg, #667EEA, #7F9CF5);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 15px -3px rgba(102, 126, 234, 0.3);
+      color: white; /* Ensure text is white */
+      font-weight: 600;
+    }
+
+    /* General Animations */
     @keyframes fadeIn {
       from {
         opacity: 0;
@@ -146,9 +229,39 @@
         transform: translateY(0);
       }
     }
-
     .animate-fadeIn {
       animation: fadeIn 0.8s ease-out forwards;
+    }
+
+    /* Scroll to Top Button */
+    .scroll-to-top {
+      position: fixed;
+      bottom: 25px; /* Slightly higher */
+      right: 25px; /* Slightly more to the right */
+      z-index: 100;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.4s ease-out; /* Smoother transition */
+      background: linear-gradient(45deg, #667EEA, #7F9CF5);
+      color: white;
+      padding: 1rem;
+      border-radius: 50%;
+      box-shadow: 0 6px 15px rgba(102, 126, 234, 0.4);
+      cursor: pointer;
+      display: flex; /* For centering icon */
+      align-items: center;
+      justify-content: center;
+      width: 50px; /* Fixed size */
+      height: 50px; /* Fixed size */
+    }
+    .scroll-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(-5px); /* Subtle lift when visible */
+    }
+    .scroll-to-top:hover {
+      transform: translateY(-8px) scale(1.05); /* More pronounced lift and scale */
+      box-shadow: 0 10px 20px rgba(102, 126, 234, 0.6);
     }
 
     /* Responsive adjustments */
@@ -158,51 +271,23 @@
         margin-right: auto;
         max-width: 90%;
       }
-      .text-5xl { font-size: 2.5rem; } /* Adjust font size for smaller screens */
+      .text-5xl { font-size: 2.75rem; } /* Adjust font size for smaller screens */
       .text-xl { font-size: 1.125rem; }
-      .text-4xl { font-size: 2rem; }
+      .text-4xl { font-size: 2.25rem; }
+      .btn-primary, .btn-secondary {
+          padding: 0.75rem 1.8rem;
+          font-size: 0.95rem;
+      }
+      .hero-title {
+          font-size: 3.5rem; /* Larger on mobile hero */
+      }
+      .hero-tagline {
+          font-size: 1.25rem;
+      }
     }
     @media (min-width: 768px) {
-      .md\:text-6xl { font-size: 4rem; }
-      .md\:text-2xl { font-size: 1.5rem; }
-    }
-
-    /* Custom scrollbar for a sleeker look */
-    ::-webkit-scrollbar {
-      width: 10px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #1A202C;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #667EEA;
-      border-radius: 5px;
-      transition: background 0.3s ease;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #7F9CF5;
-    }
-
-    /* Active filter button style */
-    .filter-btn.active {
-      background: linear-gradient(45deg, #667EEA, #7F9CF5);
-      transform: translateY(-3px);
-      box-shadow: 0 10px 15px -3px rgba(102, 126, 234, 0.3);
-      color: white; /* Ensure text is white */
-      font-weight: 600;
-    }
-    .filter-btn {
-      background: #2D3748; /* Default background for inactive buttons */
-      color: #A0AEC0; /* Lighter gray text for inactive buttons */
-      transition: all 0.3s ease;
-      border-radius: 9999px;
-      padding: 0.6rem 1.5rem;
-    }
-    .filter-btn:not(.active):hover {
-      background: #4A5568; /* Darker gray on hover for inactive */
-      color: white;
-      transform: translateY(-2px);
-      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+      .md\:text-6xl { font-size: 4.5rem; } /* Even larger for desktop hero */
+      .md\:text-2xl { font-size: 1.6rem; }
     }
   </style>
 </head>
@@ -212,34 +297,36 @@
     <div class="container mx-auto px-6 flex items-center justify-between">
       <a href="#" class="text-2xl font-bold text-blue-500">Business<span class="text-white">Intelligence</span></a>
       <div class="hidden md:flex space-x-8">
-        <a href="#about" class="nav-link hover:text-blue-400 transition">Sobre Mí</a>
-        <a href="#skills" class="nav-link hover:text-blue-400 transition">Habilidades</a>
-        <a href="#projects" class="nav-link hover:text-blue-400 transition">Proyectos</a>
-        <a href="#contact" class="nav-link hover:text-blue-400 transition">Contacto</a>
+        <a href="#about" class="nav-link">Sobre Mí</a>
+        <a href="#skills" class="nav-link">Habilidades</a>
+        <a href="#projects" class="nav-link">Proyectos</a>
+        <a href="#contact" class="nav-link">Contacto</a>
       </div>
-      <button class="md:hidden focus:outline-none" id="menu-toggle" aria-label="Toggle navigation menu">
+      <button class="md:hidden focus:outline-none text-white" id="menu-toggle" aria-label="Toggle navigation menu">
         <i class="fas fa-bars text-xl"></i>
       </button>
     </div>
     <!-- Mobile menu -->
-    <div class="md:hidden hidden bg-gray-800 py-4" id="mobile-menu">
+    <div class="md:hidden hidden bg-gray-800 py-4 shadow-xl" id="mobile-menu">
       <div class="container mx-auto px-6 flex flex-col space-y-4">
-        <a href="#about" class="hover:text-blue-400 transition py-2" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Sobre Mí</a>
-        <a href="#skills" class="hover:text-blue-400 transition py-2" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Habilidades</a>
-        <a href="#projects" class="hover:text-blue-400 transition py-2" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Proyectos</a>
-        <a href="#contact" class="hover:text-blue-400 transition py-2" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Contacto</a>
+        <a href="#about" class="hover:text-blue-400 transition py-2 text-lg font-medium" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Sobre Mí</a>
+        <a href="#skills" class="hover:text-blue-400 transition py-2 text-lg font-medium" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Habilidades</a>
+        <a href="#projects" class="hover:text-blue-400 transition py-2 text-lg font-medium" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Proyectos</a>
+        <a href="#contact" class="hover:text-blue-400 transition py-2 text-lg font-medium" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Contacto</a>
       </div>
     </div>
   </nav>
 
   <!-- Hero Section -->
-  <header class="gradient-bg py-24 text-center">
-    <div class="container mx-auto px-6">
-      <h1 class="text-5xl md:text-6xl font-extrabold mb-6 animate-fadeIn text-gradient">Portafolio Business Intelligence</h1>
-      <p class="text-xl md:text-2xl opacity-80 mb-10 animate-fadeIn delay-100 font-light">Transformando datos en insights visuales para impulsar decisiones estratégicas</p>
+  <header class="gradient-bg py-24 md:py-32 text-center relative overflow-hidden">
+    <!-- Optional: Add subtle background shapes or patterns for visual interest -->
+    <div class="absolute inset-0 z-0 opacity-10" style="background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjYwMCIgdmlld0JveD0iMCAwIDYwMCA2MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgICA8ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxjaXJjbGUgZmlsbD0iI0EwQTBFMCIgZmlsbC1vcGFjaXR5PSIuMDgiIGN4PSIyMjUiIGN5PSIyMjUiIHI9IjEyMCIvPgogICAgICAgIDxjaXJjbGUgZmlsbD0iIzY2N0VFQSIgZmlsbC1vcGFjaXR5PSIuMDkiIGN4PSIzNzUiIGN5PSIzNzUiIHI9IjE1MCIvPgogICAgPC9nPgo8L3N2Zz4='); background-size: cover; background-position: center;"></div>
+    <div class="container mx-auto px-6 relative z-10">
+      <h1 class="text-5xl md:text-6xl font-extrabold mb-6 animate-fadeIn hero-title text-gradient leading-tight">Portafolio Business Intelligence</h1>
+      <p class="text-xl md:text-2xl opacity-80 mb-10 animate-fadeIn delay-100 font-light hero-tagline max-w-4xl mx-auto">Transformando datos complejos en <span class="text-indigo-300 font-medium">insights visuales</span> para <span class="text-indigo-300 font-medium">impulsar decisiones estratégicas</span>.</p>
       <div class="flex justify-center space-x-4 animate-fadeIn delay-200">
-        <a href="#projects" class="btn-primary">Ver Proyectos</a>
-        <a href="#contact" class="btn-secondary">Contactar</a>
+        <a href="#projects" class="btn-primary">Ver Proyectos <i class="fas fa-arrow-right ml-2 text-sm"></i></a>
+        <a href="#contact" class="btn-secondary">Contactar <i class="fas fa-paper-plane ml-2 text-sm"></i></a>
       </div>
     </div>
   </header>
@@ -251,42 +338,41 @@
         <h2 class="text-4xl font-bold mb-8 text-center animate-fadeIn">Sobre Mí</h2>
         <div class="flex flex-col md:flex-row items-center gap-12">
           <div class="md:w-1/3 animate-fadeIn delay-100">
-            <div class="rounded-full overflow-hidden border-4 border-blue-500 shadow-xl">
+            <div class="rounded-full overflow-hidden border-4 border-blue-500 shadow-xl p-1 bg-white">
               <!-- Placeholder para imagen de perfil -->
-              <img src="https://placehold.co/200x200/3b82f6/ffffff?text=Tu+Foto" alt="Imagen de perfil" class="w-full h-auto object-cover">
+              <img src="https://placehold.co/200x200/3b82f6/ffffff?text=Tu+Foto" alt="Imagen de perfil" class="w-full h-auto object-cover rounded-full">
             </div>
           </div>
           <div class="md:w-2/3 animate-fadeIn delay-200">
             <p class="text-lg mb-6 leading-relaxed text-gray-700 font-light">
-              Analista de datos especializado en Power BI con experiencia en la creación de dashboards interactivos 
-              y reportes que transforman datos complejos en insights accionables para la toma de decisiones estratégicas.
+              Analista de datos especializado en Power BI con una sólida trayectoria en la creación de <span class="font-medium text-blue-600">dashboards interactivos</span> 
+              y reportes que transforman datos complejos en <span class="font-medium text-blue-600">insights accionables</span> para la toma de decisiones estratégicas.
             </p>
             <p class="text-lg mb-6 leading-relaxed text-gray-700 font-light">
-              Mi enfoque combina habilidades técnicas en análisis de datos con una sólida comprensión del negocio, 
-              lo que me permite crear soluciones visuales que realmente impactan en los resultados empresariales.
+              Mi enfoque combina habilidades técnicas avanzadas en análisis de datos con una profunda comprensión del negocio, 
+              lo que me permite diseñar soluciones visuales impactantes que generan un <span class="font-medium text-blue-600">valor tangible</span> en los resultados empresariales.
             </p>
             <div class="flex flex-wrap gap-4">
-              <a href="#contact" class="btn-primary">Contáctame</a>
-              <!-- El botón de LinkedIn fue eliminado por solicitud del usuario -->
+              <a href="#contact" class="btn-primary">Contáctame <i class="fas fa-envelope ml-2 text-sm"></i></a>
             </div>
           </div>
         </div>
         
         <div class="grid md:grid-cols-3 gap-8 mt-16">
-          <div class="text-center p-6 bg-gray-100 rounded-xl shadow-md animate-fadeIn delay-300 transform hover:scale-105 transition-transform duration-300">
+          <div class="text-center p-6 bg-gray-100 rounded-xl shadow-lg animate-fadeIn delay-300 transform hover:scale-105 transition-transform duration-300 border border-gray-200">
             <i class="fas fa-chart-line text-4xl text-blue-600 mb-4"></i>
             <h3 class="text-xl font-semibold mb-2 text-gray-800">Visualización de Datos</h3>
-            <p class="text-gray-600 font-light">Creación de dashboards interactivos y reportes dinámicos que comunican información compleja de manera clara y efectiva.</p>
+            <p class="text-gray-600 font-light">Diseño y desarrollo de dashboards intuitivos y reportes dinámicos para una comprensión clara de la información.</p>
           </div>
-          <div class="text-center p-6 bg-gray-100 rounded-xl shadow-md animate-fadeIn delay-400 transform hover:scale-105 transition-transform duration-300">
-            <i class="fas fa-database text-4xl text-green-600 mb-4"></i>
+          <div class="text-center p-6 bg-gray-100 rounded-xl shadow-lg animate-fadeIn delay-400 transform hover:scale-105 transition-transform duration-300 border border-gray-200">
+            <i class="fas fa-database text-4xl text-indigo-600 mb-4"></i>
             <h3 class="text-xl font-semibold mb-2 text-gray-800">Análisis de Datos</h3>
-            <p class="text-gray-600 font-light">Procesamiento y análisis de grandes volúmenes de información para identificar patrones, tendencias y oportunidades de mejora.</p>
+            <p class="text-gray-600 font-light">Procesamiento y modelado de grandes volúmenes de datos para descubrir patrones ocultos y oportunidades de mejora.</p>
           </div>
-          <div class="text-center p-6 bg-gray-100 rounded-xl shadow-md animate-fadeIn delay-500 transform hover:scale-105 transition-transform duration-300">
-            <i class="fas fa-lightbulb text-4xl text-yellow-600 mb-4"></i>
+          <div class="text-center p-6 bg-gray-100 rounded-xl shadow-lg animate-fadeIn delay-500 transform hover:scale-105 transition-transform duration-300 border border-gray-200">
+            <i class="fas fa-lightbulb text-4xl text-purple-600 mb-4"></i>
             <h3 class="text-xl font-semibold mb-2 text-gray-800">Business Intelligence</h3>
-            <p class="text-gray-600 font-light">Soluciones inteligentes para la toma de decisiones basadas en datos que impulsan el crecimiento y la eficiencia operativa.</p>
+            <p class="text-gray-600 font-light">Implementación de soluciones BI que potencian la toma de decisiones y el crecimiento estratégico de su negocio.</p>
           </div>
         </div>
       </div>
@@ -299,19 +385,19 @@
       <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
         <div class="stat-card p-6 rounded-lg text-center animate-fadeIn delay-100">
           <div class="text-5xl font-extrabold text-blue-400 mb-2" data-target="10" id="projects-count">0</div>
-          <div class="text-sm uppercase tracking-wider opacity-80 font-medium">Proyectos Completados</div>
+          <div class="text-sm uppercase tracking-wider opacity-80 font-medium text-gray-300">Proyectos Completados</div>
         </div>
         <div class="stat-card p-6 rounded-lg text-center animate-fadeIn delay-200">
           <div class="text-5xl font-extrabold text-blue-400 mb-2" data-target="3" id="clients-count">0</div>
-          <div class="text-sm uppercase tracking-wider opacity-80 font-medium">Clientes Satisfechos</div>
+          <div class="text-sm uppercase tracking-wider opacity-80 font-medium text-gray-300">Clientes Satisfechos</div>
         </div>
         <div class="stat-card p-6 rounded-lg text-center animate-fadeIn delay-300">
           <div class="text-5xl font-extrabold text-blue-400 mb-2" data-target="6" id="experience-count">0</div>
-          <div class="text-sm uppercase tracking-wider opacity-80 font-medium">Meses de Experiencia</div>
+          <div class="text-sm uppercase tracking-wider opacity-80 font-medium text-gray-300">Meses de Experiencia</div>
         </div>
         <div class="stat-card p-6 rounded-lg text-center animate-fadeIn delay-400">
           <div class="text-5xl font-extrabold text-blue-400 mb-2" data-target="8" id="certifications-count">0</div>
-          <div class="text-sm uppercase tracking-wider opacity-80 font-medium">Certificaciones</div>
+          <div class="text-sm uppercase tracking-wider opacity-80 font-medium text-gray-300">Certificaciones</div>
         </div>
       </div>
     </div>
@@ -323,11 +409,11 @@
       <h2 class="text-4xl font-bold mb-12 animate-fadeIn">Habilidades Técnicas</h2>
       
       <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-        <div class="animate-fadeIn delay-100 bg-gray-800 p-6 rounded-xl shadow-md">
+        <div class="animate-fadeIn delay-100 bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-700">
           <h3 class="text-xl font-semibold mb-6 text-blue-400">Herramientas de BI</h3>
-          <div class="space-y-4">
+          <div class="space-y-5">
             <div>
-              <div class="flex justify-between mb-1 text-gray-300">
+              <div class="flex justify-between mb-2 text-gray-300 text-base">
                 <span>Power BI</span>
                 <span class="font-medium">95%</span>
               </div>
@@ -336,7 +422,7 @@
               </div>
             </div>
             <div>
-              <div class="flex justify-between mb-1 text-gray-300">
+              <div class="flex justify-between mb-2 text-gray-300 text-base">
                 <span>Excel Intermedio</span>
                 <span class="font-medium">80%</span>
               </div>
@@ -347,11 +433,11 @@
           </div>
         </div>
         
-        <div class="animate-fadeIn delay-200 bg-gray-800 p-6 rounded-xl shadow-md">
+        <div class="animate-fadeIn delay-200 bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-700">
           <h3 class="text-xl font-semibold mb-6 text-blue-400">Lenguajes y Tecnologías</h3>
-          <div class="space-y-4">
+          <div class="space-y-5">
             <div>
-              <div class="flex justify-between mb-1 text-gray-300">
+              <div class="flex justify-between mb-2 text-gray-300 text-base">
                 <span>DAX</span>
                 <span class="font-medium">90%</span>
               </div>
@@ -360,7 +446,7 @@
               </div>
             </div>
             <div>
-              <div class="flex justify-between mb-1 text-gray-300">
+              <div class="flex justify-between mb-2 text-gray-300 text-base">
                 <span>Power Query (M)</span>
                 <span class="font-medium">85%</span>
               </div>
@@ -405,12 +491,12 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8" id="projects-grid">
         <!-- Project 1 -->
         <div class="project-card bg-gray-800 rounded-xl overflow-hidden shadow-lg border border-gray-700 animate-fadeIn" data-category="finance">
-          <div class="project-image-container h-48">
+          <div class="project-image-container">
             <img src="https://placehold.co/600x400/3b82f6/ffffff?text=Dashboard+Financiero" alt="Imagen del Dashboard Financiero" class="project-image">
             <div class="project-overlay">
                 <h3 class="text-xl font-semibold text-white mb-2">Dashboard Financiero</h3>
                 <p class="text-gray-200 text-sm mb-4 font-light">Análisis de KPIs, flujo de caja y rentabilidad.</p>
-                <a href="https://app.powerbi.com/view?r=example-dashboard-finance" target="_blank" class="bg-white text-blue-600 px-6 py-2 rounded-full font-semibold hover:bg-blue-50 transition transform hover:scale-105 duration-200">Ver Proyecto</a>
+                <a href="https://app.powerbi.com/view?r=example-dashboard-finance" target="_blank" class="btn-secondary text-blue-200 bg-transparent border-blue-200 px-6 py-2 text-sm hover:text-white hover:bg-blue-600 hover:border-blue-600 transition transform hover:scale-105 duration-200">Ver Proyecto <i class="fas fa-external-link-alt ml-2 text-xs"></i></a>
             </div>
           </div>
           <div class="p-6">
@@ -428,12 +514,12 @@
         </div>
         <!-- Project 2 -->
         <div class="project-card bg-gray-800 rounded-xl overflow-hidden shadow-lg border border-gray-700 animate-fadeIn delay-100" data-category="sales">
-          <div class="project-image-container h-48">
+          <div class="project-image-container">
             <img src="https://placehold.co/600x400/22c55e/ffffff?text=An%C3%A1lisis+de+Ventas" alt="Imagen del Análisis de Ventas" class="project-image">
             <div class="project-overlay">
                 <h3 class="text-xl font-semibold text-white mb-2">Análisis de Ventas</h3>
                 <p class="text-gray-200 text-sm mb-4 font-light">Visualización de rendimiento de ventas y tendencias.</p>
-                <a href="https://app.powerbi.com/view?r=example-dashboard-sales" target="_blank" class="bg-white text-green-600 px-6 py-2 rounded-full font-semibold hover:bg-green-50 transition transform hover:scale-105 duration-200">Ver Proyecto</a>
+                <a href="https://app.powerbi.com/view?r=example-dashboard-sales" target="_blank" class="btn-secondary text-green-200 bg-transparent border-green-200 px-6 py-2 text-sm hover:text-white hover:bg-green-600 hover:border-green-600 transition transform hover:scale-105 duration-200">Ver Proyecto <i class="fas fa-external-link-alt ml-2 text-xs"></i></a>
             </div>
           </div>
           <div class="p-6">
@@ -451,12 +537,12 @@
         </div>
         <!-- Project 3 -->
         <div class="project-card bg-gray-800 rounded-xl overflow-hidden shadow-lg border border-gray-700 animate-fadeIn delay-200" data-category="operations">
-          <div class="project-image-container h-48">
+          <div class="project-image-container">
             <img src="https://placehold.co/600x400/f97316/ffffff?text=Eficiencia+Operativa" alt="Imagen de Eficiencia Operativa" class="project-image">
             <div class="project-overlay">
                 <h3 class="text-xl font-semibold text-white mb-2">Eficiencia Operativa</h3>
                 <p class="text-gray-200 text-sm mb-4 font-light">Optimización de procesos y rendimiento.</p>
-                <a href="https://app.powerbi.com/view?r=example-dashboard-operations" target="_blank" class="bg-white text-orange-600 px-6 py-2 rounded-full font-semibold hover:bg-orange-50 transition transform hover:scale-105 duration-200">Ver Proyecto</a>
+                <a href="https://app.powerbi.com/view?r=example-dashboard-operations" target="_blank" class="btn-secondary text-orange-200 bg-transparent border-orange-200 px-6 py-2 text-sm hover:text-white hover:bg-orange-600 hover:border-orange-600 transition transform hover:scale-105 duration-200">Ver Proyecto <i class="fas fa-external-link-alt ml-2 text-xs"></i></a>
             </div>
           </div>
           <div class="p-6">
@@ -473,12 +559,12 @@
         </div>
         <!-- Project 4 -->
         <div class="project-card bg-gray-800 rounded-xl overflow-hidden shadow-lg border border-gray-700 animate-fadeIn" data-category="hr">
-          <div class="project-image-container h-48">
+          <div class="project-image-container">
             <img src="https://placehold.co/600x400/ef4444/ffffff?text=An%C3%A1lisis+de+RRHH" alt="Imagen de Análisis de RRHH" class="project-image">
             <div class="project-overlay">
                 <h3 class="text-xl font-semibold text-white mb-2">Análisis de RRHH</h3>
                 <p class="text-gray-200 text-sm mb-4 font-light">Métricas clave de recursos humanos.</p>
-                <a href="https://app.powerbi.com/view?r=example-dashboard-hr" target="_blank" class="bg-white text-red-600 px-6 py-2 rounded-full font-semibold hover:bg-red-50 transition transform hover:scale-105 duration-200">Ver Proyecto</a>
+                <a href="https://app.powerbi.com/view?r=example-dashboard-hr" target="_blank" class="btn-secondary text-red-200 bg-transparent border-red-200 px-6 py-2 text-sm hover:text-white hover:bg-red-600 hover:border-red-600 transition transform hover:scale-105 duration-200">Ver Proyecto <i class="fas fa-external-link-alt ml-2 text-xs"></i></a>
             </div>
           </div>
           <div class="p-6">
@@ -495,12 +581,12 @@
         </div>
         <!-- Project 5 -->
         <div class="project-card bg-gray-800 rounded-xl overflow-hidden shadow-lg border border-gray-700 animate-fadeIn delay-100" data-category="finance">
-          <div class="project-image-container h-48">
+          <div class="project-image-container">
             <img src="https://placehold.co/600x400/8b5cf6/ffffff?text=Presupuesto+vs+Real" alt="Imagen de Presupuesto vs Real" class="project-image">
             <div class="project-overlay">
                 <h3 class="text-xl font-semibold text-white mb-2">Presupuesto vs Real</h3>
                 <p class="text-gray-200 text-sm mb-4 font-light">Comparación de presupuesto y gasto real.</p>
-                <a href="https://app.powerbi.com/view?r=example-dashboard-budget" target="_blank" class="bg-white text-purple-600 px-6 py-2 rounded-full font-semibold hover:bg-purple-50 transition transform hover:scale-105 duration-200">Ver Proyecto</a>
+                <a href="https://app.powerbi.com/view?r=example-dashboard-budget" target="_blank" class="btn-secondary text-purple-200 bg-transparent border-purple-200 px-6 py-2 text-sm hover:text-white hover:bg-purple-600 hover:border-purple-600 transition transform hover:scale-105 duration-200">Ver Proyecto <i class="fas fa-external-link-alt ml-2 text-xs"></i></a>
             </div>
           </div>
           <div class="p-6">
@@ -517,12 +603,12 @@
         </div>
         <!-- Project 6 -->
         <div class="project-card bg-gray-800 rounded-xl overflow-hidden shadow-lg border border-gray-700 animate-fadeIn delay-200" data-category="sales">
-          <div class="project-image-container h-48">
+          <div class="project-image-container">
             <img src="https://placehold.co/600x400/facc15/ffffff?text=An%C3%A1lisis+de+Clientes" alt="Imagen de Análisis de Clientes" class="project-image">
             <div class="project-overlay">
                 <h3 class="text-xl font-semibold text-white mb-2">Análisis de Clientes</h3>
                 <p class="text-gray-200 text-sm mb-4 font-light">Segmentación y comportamiento del cliente.</p>
-                <a href="https://app.powerbi.com/view?r=example-dashboard-customers" target="_blank" class="bg-white text-yellow-600 px-6 py-2 rounded-full font-semibold hover:bg-yellow-50 transition transform hover:scale-105 duration-200">Ver Proyecto</a>
+                <a href="https://app.powerbi.com/view?r=example-dashboard-customers" target="_blank" class="btn-secondary text-yellow-200 bg-transparent border-yellow-200 px-6 py-2 text-sm hover:text-white hover:bg-yellow-600 hover:border-yellow-600 transition transform hover:scale-105 duration-200">Ver Proyecto <i class="fas fa-external-link-alt ml-2 text-xs"></i></a>
             </div>
           </div>
           <div class="p-6">
@@ -541,7 +627,7 @@
       </div>
       
       <div class="text-center mt-12 animate-fadeIn delay-300">
-        <button id="load-more-btn" class="btn-primary">Ver Más Proyectos</button>
+        <button id="load-more-btn" class="btn-primary">Ver Más Proyectos <i class="fas fa-plus ml-2 text-sm"></i></button>
       </div>
     </div>
   </section>
@@ -618,17 +704,10 @@
     filterButtons.forEach(button => {
       button.addEventListener('click', () => {
         // Remover clase 'active' de todos los botones de filtro
-        filterButtons.forEach(btn => btn.classList.remove('active')); // Removed color classes here
-        filterButtons.forEach(btn => {
-            // Re-add default gray colors if not active
-            if (!btn.classList.contains('active')) {
-                btn.classList.add('bg-gray-700', 'hover:bg-gray-600', 'text-white'); // Ensure base colors are there
-            }
-        });
-
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        
         // Añadir clase 'active' al botón clickeado
-        button.classList.add('active'); // The CSS handles the active gradient and shadow
-        button.classList.remove('bg-gray-700', 'hover:bg-gray-600'); // Remove default background
+        button.classList.add('active'); 
 
         const filter = button.dataset.filter; // Obtener el valor del filtro (ej. 'all', 'finance')
 
@@ -646,7 +725,19 @@
     // JavaScript para el botón "Ver Más Proyectos" (ejemplo simplificado)
     const loadMoreButton = document.getElementById('load-more-btn');
     loadMoreButton.addEventListener('click', () => {
-      console.log('¡Todos los proyectos ya están cargados!'); 
+      console.log('¡Todos los proyectos ya están cargados! En una aplicación real, aquí cargaríamos más contenido.'); 
+      // En una aplicación real, aquí podrías cargar más proyectos de una base de datos o un JSON
+      // Por ejemplo, añadiendo un API fetch call:
+      /*
+      fetch('/api/more-projects')
+        .then(response => response.json())
+        .then(newProjects => {
+          newProjects.forEach(project => {
+            // Create and append new project cards
+          });
+        })
+        .catch(error => console.error('Error loading more projects:', error));
+      */
     });
 
 
@@ -686,9 +777,9 @@
     animateOnScroll(); // Ejecutar al cargar la página para animar los elementos visibles inicialmente
 
     // Animación de conteo para la sección de estadísticas
-    const statsSection = document.querySelector('.bg-gray-800'); // Selector ajustado para la sección de stats
+    const statsSection = document.querySelector('.bg-gray-800'); // Selector para la sección de stats
     const counters = document.querySelectorAll('.stat-card .text-5xl'); // Selector ajustado para el tamaño de texto
-    const speed = 200;
+    const speed = 200; // La velocidad del conteo (cuanto mayor el número, más lento)
 
     function animateCount(counter) {
         const target = +counter.getAttribute('data-target');
@@ -711,15 +802,16 @@
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 counters.forEach(counter => {
+                    // Solo animar si aún no ha sido animado (evitar re-animación al hacer scroll de nuevo)
                     if (counter.getAttribute('data-animated') !== 'true') {
                         animateCount(counter);
                         counter.setAttribute('data-animated', 'true');
                     }
                 });
-                observer.unobserve(entry.target);
+                observer.unobserve(entry.target); // Dejar de observar una vez que se ha animado
             }
         });
-    }, { threshold: 0.5 });
+    }, { threshold: 0.5 }); // La animación se dispara cuando el 50% de la sección es visible
 
     if (statsSection) {
         observer.observe(statsSection);
